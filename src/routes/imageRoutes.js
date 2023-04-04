@@ -1,12 +1,11 @@
-const express = require("express");
+let express = require("express");
+const imageModel = require("../Model/imageSchemas");
 const router = express.Router();
-
-const {
-  getImage,
-  deleteImage,
-  postImage,
-} = require("../Controllers/imageControllers");
-const { upload } = require("../middlewares/imageUpload");
+let { upload } = require("../middlewares/imageUpload");
+router.use(express.json());
+let { getImage } = require("../Controllers/imageControllers");
+let { deleteImage } = require("../Controllers/imageControllers");
+let { postImage } = require("../Controllers/imageControllers");
 
 router.get("/", getImage);
 router.post("/", upload, postImage);
